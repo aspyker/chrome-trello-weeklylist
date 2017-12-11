@@ -77,8 +77,18 @@ function getListCards(id) {
       return item.name;
     }).join();
     console.log("names = " + names);
+    updateWeeklyList(res);
   },
   function (res) {
     console.log("Failed to load list cards" + res);
+  });
+}
+
+function updateWeeklyList(cards) {
+  // clear the existing list
+  $('#weeklyItems .list li').remove();
+
+  $.each(cards, function(index, card) {
+    $('#weeklyItems .list').append('<li><h3 class="name">'+card.name+'</h3></li>')
   });
 }
