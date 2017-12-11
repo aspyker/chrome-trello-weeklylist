@@ -1,3 +1,4 @@
+.row-header { text-align: center; }
 .list-group { width: 100%; git }
 .panel-primary { padding-left: 0; padding-right:0; }
 .list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}

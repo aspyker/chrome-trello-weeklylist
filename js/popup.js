@@ -46,7 +46,7 @@ function populateWeeklyList() {
   },
   function (res) {
     console.log("got boards = " + res);
-    getBoard(res[3].id); // TODO: Get this from user configuration
+    getBoard(res[3].id); // TODO: Get the name and index of board from user configuration
   },
   function(res) {
     console.log("Failed to load boards" + res);
@@ -59,7 +59,7 @@ function getBoard(id) {
   },
   function (res) {
     console.log("got board = " + res);
-      getListCards(res[3].id); // TODO: Get this from user configuration
+      getListCards(res[3].id); // TODO: Get the name and list of the list from user configuration
   },
   function(res) {
     console.log("Failed to load board" + res);
