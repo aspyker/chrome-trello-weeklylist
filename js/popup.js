@@ -85,10 +85,11 @@ function getListCards(id) {
 }
 
 function updateWeeklyList(cards) {
+  chrome.browserAction.setBadgeText({text: cards.length.toString()});
   // clear the existing list
-  $('#weeklyItems .list li').remove();
+  $('#weeklyItems .list-group li').remove();
 
   $.each(cards, function(index, card) {
-    $('#weeklyItems .list').append('<li><h3 class="name">'+card.name+'</h3></li>')
+    $('#weeklyItems .list-group').append('<li class="list-group-item">'+card.name+'</li>');
   });
 }

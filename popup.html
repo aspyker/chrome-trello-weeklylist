@@ -4,26 +4,30 @@
   <meta charset="UTF-8">
   <title>Weekly List For Trello</title>
   <link rel="stylesheet" type="text/css" href="css/popup.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
-<div id="loggedOut" style="width: 340px; height: 600px; overflow: auto;">
+<div id="loggedOut" style="width: 340px; height: 300px; overflow: auto;">
   <div style="text-align: center; padding: 60px">
     <img src="images/loader.svg" width="50" height="50" />
   </div>
 </div>
-<div id="loggedIn" style="width: 340px; height: 600px; overflow: auto;">
-    <div style="text-align: center; padding: 60px">
-        TODO This week
+<div id="loggedIn" style="width: 340px; height: 300px; overflow: auto;">
+  <div class="container-fluid">
+    <div class="row">
+      <div>
+        Weekly TODO's
+      </div>
     </div>
-  <div id="weeklyItems">
-    <ul class="list">
-      <li>
-        <h3 class="name">item temp</h3>
-      </li>
-    </ul>
+    <div class="row" id="weeklyItems">
+      <ul class="list-group">
+        <li class="list-group-item">Temp List Group</li>
+      </ul>
+    </div>
   </div>
 </div>
 <script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/popup.js"></script>
 <script src="js/trello-client.js"></script>
 </body>
