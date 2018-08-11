@@ -1,4 +1,8 @@
+const apikey = "bd688ee47090e2429b7b70720ba5551b";
+const apiapp = "ChromeTrelloWeeklyList"
+
 window.onload = function () {
+  console.log("loading popup.js")
   authenticate();
 
   if (isLoggedIn()) {
@@ -20,14 +24,15 @@ function authenticate() {
   }
 
   var returnUrl = chrome.extension.getURL("token.html");
+  console.log("showing login.html");
   chrome.windows.create({
     url: "https://trello.com/1/authorize?" +
     "response_type=token" +
-    "&key=41257716bae3f0f35422a228fbd18c97" +
+    "&key=" + apikey +
     "&response_type=token" +
-    "&return_url=" + encodeURI(returnUrl) +
+//    "&return_url=" + encodeURI(returnUrl) +
     "&scope=read,write,account&expiration=never" +
-    "&name=Chromello",
+    "&name=" + apiapp,
     width: 520,
     height: 620,
     type: "panel",
@@ -42,7 +47,7 @@ function isLoggedIn(callback) {
 function populateWeeklyList() {
   Trello.setToken(window.localStorage.getItem("trellotoken"));
   Trello.get("/members/me/boards/", {
-    key: "41257716bae3f0f35422a228fbd18c97"
+    key: apikey
   },
   function (res) {
     console.log("got boards = " + res);
@@ -55,11 +60,11 @@ function populateWeeklyList() {
 
 function getBoard(id) {
   Trello.get("/boards/" + id + "/lists", {
-    key: "41257716bae3f0f35422a228fbd18c97"
+    key: apikey
   },
   function (res) {
     console.log("got board = " + res);
-      getListCards(res[3].id); // TODO: Get the name and list of the list from user configuration
+      getListCards(res[1].id); // TODO: Get the name and list of the list from user configuration
   },
   function(res) {
     console.log("Failed to load board" + res);
@@ -68,7 +73,7 @@ function getBoard(id) {
 
 function getListCards(id) {
   Trello.get("/lists/" + id + "/cards", {
-    key: "41257716bae3f0f35422a228fbd18c97"
+    key: apikey
   },
   function (res) {
     console.log("got list cards = " + res);
